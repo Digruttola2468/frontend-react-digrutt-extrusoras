@@ -106,7 +106,7 @@ const NewNotaEnvio = () => {
             error: (e) => {
                 if (e.response.data.errors != null)
                     setRequeterror(e.response.data.errors)
-                return "No se Creo"
+                return e.response.data.message
             }
         })
     }
@@ -310,7 +310,7 @@ const NewNotaEnvio = () => {
                         </p>
                         <div className="flex flex-row gap-2">
                             <label className="block mb-2">
-                                <span className="text-gray-700">Price</span>
+                                <span className="text-gray-700">Precio Total</span>
                                 <input
                                     type="number"
                                     id={`input-price-newNotaEnvio-${e.id_inventario}`}
@@ -319,7 +319,7 @@ const NewNotaEnvio = () => {
                                 <span className="text-xs text-gray-400 absolute">${e.price} x mt</span>
                             </label>
                             <label className="block mb-2">
-                                <span className="text-gray-700">Paquetes</span>
+                                <span className="text-gray-700">Cant. Paquetes</span>
                                 <input
                                     type="number"
                                     id={`input-stockmts-newNotaEnvio-${e.id_inventario}`}

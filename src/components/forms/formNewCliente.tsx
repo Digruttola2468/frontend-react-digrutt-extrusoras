@@ -40,7 +40,7 @@ const FormNewCliente = () => {
             error: (e) => {
                 if (e.response.data.errors != null)
                     setRequeterror(e.response.data.errors)
-                return "No se creo"
+                return e.response.data.message
             }
         })
     }

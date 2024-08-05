@@ -50,6 +50,14 @@ const DialogNewSalida: React.FC<NewDialogProps> = ({isOpen, onClose, onCreate}) 
         }).catch(e => { })
     }, [])
 
+    useEffect(() => {
+        if (inputAutoComplete == "") {
+            setFilterOptions([])
+            setSelectedAutoComplete(null);
+        }
+    }, [inputAutoComplete])
+
+
     const handleNewSalida = () => {
         let salida = parseInt(paquetes) * selectedAutoComplete?.rollos_x_bolsas * selectedAutoComplete?.metros_x_rollo;
         onCreate({ id_inventario: idInventario, price: parseFloat(price), stock_mts: salida });
@@ -82,7 +90,7 @@ const DialogNewSalida: React.FC<NewDialogProps> = ({isOpen, onClose, onCreate}) 
                                 className="p-2 hover:bg-gray-200 cursor-pointer"
                             >
                                 <div className="font-bold">{option.codigo}</div>
-                                <div className="text-sm text-gray-500">{option.descripcion}</div>
+                                <div className="text-sm text-gray-500">{option.descripcion} {option.color}</div>
                             </li>
                         ))}
                     </ul>
